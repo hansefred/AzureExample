@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  azureexample:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__MySQL=Database=ApplicationDbContext;Data Source=DB;User Id=root;Password=Bindu123
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  DB:
+    image: mysql:latest
+    environment:
+     - MYSQL_ROOT_PASSWORD=Bindu123
+    ports:
+     - "3306:3306" 
+ 
