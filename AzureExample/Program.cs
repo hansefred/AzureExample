@@ -28,7 +28,7 @@ var app = builder.Build();
 using (var serviceScopce = app.Services.CreateScope())
 {
    var AppDBContext =  serviceScopce.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    AppDBContext.Database.Migrate();
+    await AppDBContext.Database.MigrateAsync();
 }
 
 
